@@ -80,8 +80,6 @@ public class WarExampleApplication extends SpringBootServletInitializer {
 
 <strong>After</strong>
 <pre class="brush: xml; title: ; notranslate" title="">
-<packaging>war</packaging>
-</pre>
 &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
 	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
 	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
@@ -98,16 +96,18 @@ public class WarExampleApplication extends SpringBootServletInitializer {
 		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
 		&lt;version&gt;1.4.3.RELEASE&lt;/version&gt;
 	&lt;/parent&gt;
+</pre>
+
 <h4> Step 3 : Exclude the embedded container from &#8216;war&#8217;</h4>
 
 <p>As we will be deploying the WAR to external container, we don&#8217;t want the embedded container to be present in war in order to avoid any interference. Just mark the embedded container dependency as &#8216;provided&#8217;.</p>
 
 <pre class="brush: xml; title: ; notranslate" title="">
-                <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-tomcat</artifactId>
-    <scope>provided</scope>
-</dependency>
+&lt;dependency&gt;
+                    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                    &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;
+                    &lt;scope&gt;provided&lt;/scope&gt;
+                &lt;/dependency&gt;
 </pre>
 
 <p>Now you can build [mvn clean package] and deploy the war to your external container.</p>
