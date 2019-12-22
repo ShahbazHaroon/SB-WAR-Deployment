@@ -60,14 +60,44 @@ public class WarExampleApplication extends SpringBootServletInitializer {
 <strong>Before</strong>
 
 <pre class="brush: xml; title: ; notranslate" title="">
-<packaging>jar</packaging>
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+	&lt;groupId&gt;com.ubaidsample.WARExample&lt;/groupId&gt;
+	&lt;artifactId&gt;WarExampleApplication&lt;/artifactId&gt;
+	&lt;version&gt;1.0.0&lt;/version&gt;
+	&lt;packaging&gt;jar&lt;/packaging&gt;
+
+	&lt;name&gt;${project.artifactId}&lt;/name&gt;
+
+	&lt;parent&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+		&lt;version&gt;1.4.3.RELEASE&lt;/version&gt;
+	&lt;/parent&gt;
 </pre>
 
 <strong>After</strong>
 <pre class="brush: xml; title: ; notranslate" title="">
 <packaging>war</packaging>
 </pre>
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 
+	&lt;groupId&gt;com.ubaidsample.WARExample&lt;/groupId&gt;
+	&lt;artifactId&gt;WarExampleApplication&lt;/artifactId&gt;
+	&lt;version&gt;1.0.0&lt;/version&gt;
+	&lt;packaging&gt;war&lt;/packaging&gt;
+
+	&lt;name&gt;${project.artifactId}&lt;/name&gt;
+
+	&lt;parent&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+		&lt;version&gt;1.4.3.RELEASE&lt;/version&gt;
+	&lt;/parent&gt;
 <h4> Step 3 : Exclude the embedded container from &#8216;war&#8217;</h4>
 
 <p>As we will be deploying the WAR to external container, we don&#8217;t want the embedded container to be present in war in order to avoid any interference. Just mark the embedded container dependency as &#8216;provided&#8217;.</p>
