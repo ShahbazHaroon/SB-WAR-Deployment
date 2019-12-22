@@ -110,6 +110,6 @@ public class WarExampleApplication extends SpringBootServletInitializer {
                 &lt;/dependency&gt;
 </pre>
 
-<p>Now you can build [mvn clean package] and deploy the war to your external container.</p>
+<p>Now you can build <strong>[mvn clean package]</strong> and deploy the war to your external container.</p>
 
 <p>It will produce WAR which you can simply deploy in external container. In this post, we are deploying it in tomcat 8.0.21, by putting the resultant war file in <u>webapps</u> folder and starting the tomcat[<u>bin/startUp.bat</u>].</p>
