@@ -132,7 +132,7 @@ CMD ["catalina.sh","run"]
 
 <p>Start the docker</p>
 
-<pre>systemctl start docker<pre>
+<pre>systemctl start docker</pre>
 
 <p>Open the terminal and go to the Spring Boot project folder</p>
 
@@ -142,13 +142,13 @@ CMD ["catalina.sh","run"]
 
 <p>Run the image as a container</p>
 
-<pre>docker container run -p 8080:8080 -d springBootApplication-producer<pre>
+<pre>docker container run -p 8080:8080 -d springBootApplication-producer</pre>
 
 <p>The docker internal port 8080 to our external port 8080. Now go to localhost:8080 and we can see that tomcat has started successfully</p>
 
 <p>Go inside the docker and investigate it using the docker exec command</p>
 
-<pre>docker container exec -it 03 /bin/sh<pre>
+<pre>docker container exec -it 03 /bin/sh</pre>
 
 <li>cd webapps/</li>
 
