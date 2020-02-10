@@ -113,3 +113,58 @@ public class WarExampleApplication extends SpringBootServletInitializer {
 <p>Now you can build <strong>[mvn clean package]</strong> and deploy the war to your external container.</p>
 
 <p>It will produce WAR which you can simply deploy in external container. In this post, we are deploying it in tomcat 8.0.21, by putting the resultant war file in <u>webapps</u> folder and starting the tomcat[<u>bin/startUp.bat</u>].</p>
+
+
+<h2>Deploying to Docker</h2>
+
+<p>Need tomcat image using which we will be deploying our application. Go to dockerhub and search tomcat</p>
+
+<p>Go to the spring boot project folder and create a docker file:</p>
+
+<pre>
+From tomcat:8.0.51-jre8-alpine
+CMD ["catalina.sh","run"]
+</pre>
+
+<p>Open the terminal and install the docker</p>
+
+<pre>yum install docker</pre>
+
+<p>Start the docker</p>
+
+<pre>systemctl start docker<pre>
+
+<p>Open the terminal and go to the Spring Boot project folder</p>
+
+<p>Build an image with the name producer</p>
+
+<pre>docker image build -t springBootApplication-producer .</pre>
+
+<p>Run the image as a container</p>
+
+<pre>docker container run -p 8080:8080 -d springBootApplication-producer<pre>
+
+<p>The docker internal port 8080 to our external port 8080. Now go to localhost:8080 and we can see that tomcat has started successfully</p>
+
+<p>Go inside the docker and investigate it using the docker exec command</p>
+
+<pre>docker container exec -it 03 /bin/sh<pre>
+
+<li>cd webapps/</li>
+
+<p>Need to copy WAR file in the webapps folder of the tomcat inside the docker. This we will do it adding commands to the docker file</p>
+
+<pre>
+From tomcat:8.0.51-jre8-alpine
+RUN rm -rf /usr/local/tomcat/webapps/*
+COPY ./target/springBootApplication-producer-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+CMD ["catalina.sh","run"]
+</pre>
+
+<p>Stop the docker container we had previously started</p>
+
+<pre>docker container stop 03</pre>
+
+<p>Again build the image, and start the container</p>
+
+<p>Go to localhost:8080/YOUR-API-END-POINT, we will see that our application is deployed successfully</p>
